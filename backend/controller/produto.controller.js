@@ -87,7 +87,7 @@ const atualizarParcial = async (req,res) => {
     const valor = req.params.id
     const valores = req.body
 
-    if (!valores.nome || !valores.email || !valores.senha || !valores.telefone || !valores.cpf) {
+    if (!valores.idCategoria && !valores.nome && !valores.preco && !valores.imagem_url && !valores.descricao) {
         return res.status(400).json({message: "Preencha os campos obrigatórios!"})
     }
 
