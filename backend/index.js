@@ -39,7 +39,7 @@ app.get('/categorias', categoriaController.listar)
 
 // app.use(authMiddleware)
 
-app.get('/usuarios/perfil', usuarioController.buscarPorCod)
+app.get('/usuarios/perfil/:id', usuarioController.buscarPorCod)
 app.put('/usuarios/:id', usuarioController.atualizarCompleto)
 app.patch('/usuarios/:id', usuarioController.atualizarParcial)
 
@@ -52,7 +52,7 @@ app.patch('/produtos/:id', produtoController.atualizarParcial)
 app.delete('/produtos/:id', produtoController.excluir)
 
 app.post('/estoque', estoqueController.cadastrar)
-// app.put('/estoque/:id', estoqueController.atualizarCompleto)
+app.put('/estoque/:id', estoqueController.atualizarCompleto)
 
 // app.get('/relatorios/vendas', relatVwController.vendas)
 // app.get('/relatorios/estoque', relatVwController.estoque)

@@ -26,4 +26,22 @@ const listar = async (req,res) => {
     }
 }
 
-module.exports = { cadastrar, listar }
+const atualizarCompleto = async (req,res) => {
+    const valores = req.body
+    const valor = req.params.id
+    
+    try{
+        const estoque = await Estoque.findByPk(valor)
+        if(estoque){
+            await estoque.update(valores)
+        }else{
+            res.status(403).json({message: `Estoque não encontrado!`})
+        }
+        res.status(200).json({message: `Dados de estoque atualizados!`})
+    }catch(err){
+        res.status(500).json({message: `Não foi possível atualizar o estoque!`})
+        console.error(`Não foi possível atualizar o estoque`)
+    }
+}
+
+module.exports = { cadastrar, listar, atualizarCompleto }
