@@ -11,6 +11,7 @@ const produtoController = require("./controller/produto.controller")
 const categoriaController = require("./controller/categoria.controller")
 const pedidoController = require("./controller/pedido.controller")
 const estoqueController = require("./controller/estoque.controller")
+const authController = require("./controller/auth.controller")
 // const relatVwController = require("./controller/relatVW.controller")
 
 // ---------- Middleware ----------
@@ -26,7 +27,7 @@ app.get('/', (req, res) => {
     res.status(200).json({message: "Teste de aplicação rodando"})
 })
 
-// app.post('/login', authController.login)
+app.post('/login', authController.login)
 app.post('/usuario', usuarioController.cadastrar)
 
 app.get('/produtos', produtoController.listar)
@@ -37,7 +38,7 @@ app.get('/categorias', categoriaController.listar)
 
 // Rotas privadas
 
-// app.use(authMiddleware)
+app.use(authMiddleware)
 
 app.get('/usuarios/perfil/:id', usuarioController.buscarPorCod)
 app.put('/usuarios/:id', usuarioController.atualizarCompleto)

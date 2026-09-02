@@ -1,4 +1,5 @@
 const Usuario = require('../models/Usuario')
+const { hashPassword, comparePassword } = require("../service/bcrypt.service")
 
 const cadastrar = async (req,res) => {
     const valores = req.body
@@ -7,7 +8,12 @@ const cadastrar = async (req,res) => {
         return res.status(400).json({message: "Preencha os campos obrigatórios!"})
     }
 
+    
     try{
+        const senhaHash = await hashPassword(valores.senha)
+
+        valores.senha = senhaHash
+
         await Usuario.create(valores)
         res.status(201).json({message: `Dados do usuários cadastrados com sucesso!`})
     }catch(err){
