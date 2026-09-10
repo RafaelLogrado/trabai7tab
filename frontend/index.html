@@ -17,7 +17,28 @@
         </nav>
     </header>
     <main id="grid-produtos">
+        <div class="grid-produtos">
+            <div class="card-produto">
+                <div class="container-imagem">
+                    <img src="${el.imagem}" alt="${el.nome}" class="imagem-produto">
+                    
+                    <span class="selo-desconto">-${(el.percentualDesconto)}%</span>
+                </div>
 
+                <div class="card-conteudo">
+                    <h2 class="nome-produto">${el.nome}</h2>
+                    
+                    <p class="descricao-produto">
+                        ${el.descricao}
+                    </p>
+                    
+                    <div class="container-preco">
+                        <span class="preco-original">R$ ${precoOriginal}</span>
+                        <span class="preco-final">R$ ${precoFinal}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
 

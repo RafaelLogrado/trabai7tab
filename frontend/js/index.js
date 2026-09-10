@@ -1,1 +1,2 @@
 let gridProdutos = document.getElementById("grid-produtos")
+
